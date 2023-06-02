@@ -1,0 +1,29 @@
+
+{%extends 'basereg.html'%}
+{%block basereg%}
+<div class="body">
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div class="main-container">
+          <div class="title">
+            SIGN IN
+         </div>
+          <div class="field">
+            {{form.username.error}}
+            {{form.username}}
+          </div>
+          <div class="field">
+            {{form.password.error}}
+            {{form.password}}
+          </div>
+            <button class="btn btn-success">SIGN IN</button>
+            <a href="{% url 'signup' %}">create new user account </a>
+        </div>
+    </form>
+  </div>
+  {% for i in messages %}
+  <div class="alert alert-info">
+    {{i}}
+  </div>
+  {% endfor %}
+{%endblock basereg%}

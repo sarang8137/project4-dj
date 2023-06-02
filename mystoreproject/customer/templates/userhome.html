@@ -1,0 +1,22 @@
+{%extends 'base.html'%}
+{%block base%}
+<h1 class="bg-dark text-center">MY STORE</h1>
+<div class="row p-5">
+    {% for i in product %}
+    <div class="card" style="width:18rem">
+    <a href="{% url 'pro' i.id %}" class="streched-link">
+    <img class="card-img-top" src="{{i.product_image.url}}" alt="Card image" height="250px">
+    </a>
+    <div class="card-body">
+        <h4 class="card-title">{{i.product_name}}</h4>
+    </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">{{i.product_category}}</li>
+        <li class="list-group-item">{{i.product_price}}</li>
+        
+
+    </ul>
+    </div>
+    {% endfor %}
+</div>
+{%endblock base%}

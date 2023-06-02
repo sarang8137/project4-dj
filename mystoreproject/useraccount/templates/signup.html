@@ -1,0 +1,40 @@
+{%extends 'basereg.html'%}
+{%block basereg%}
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div class="title">
+          Registration Form
+       </div>
+
+        <div class="field">
+          {{form.first_name.error}}
+          {{form.first_name}}
+        </div>
+        <div class="field">
+          {{form.last_name.error}}
+          {{form.last_name}}
+        </div>
+        <div class="field">
+          {{form.email.error}}
+          {{form.email}}
+        </div>
+        <div class="field">
+          {{form.username.error}}
+          {{form.username}}
+        </div>
+        <div class="field">
+          {{form.password1.error}}
+          {{form.password1}}
+        </div>
+        <div class="field">
+          {{form.password2.error}}
+          {{form.password2}}
+        </div>
+        <div class="field">
+          <input type="submit" value="register">
+        </div>
+        <div class="signup-link">
+          already a member? <a href="{% url 'signin' %}">Login now</a>
+        </div>
+    </form>
+{%endblock basereg%}
