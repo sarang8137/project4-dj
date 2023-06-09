@@ -13,8 +13,8 @@
         <li class="list-group-item">RS.{{product.product_price}}</li>
         <li class="list-group-item">{{product.product_description}}</li>
         <li>
-            <a href="" class="btn btn-warning">Add To Cart</a>
-            <a href="" class="btn btn-success">Buy Now</a>
+            <a href="{% url 'acart' product.id %}" class="btn btn-warning">Add To Cart</a>
+            <a href="{% url 'buynow' product.id %}" class="btn btn-success">Buy Now</a>
         </li>
     </ul>
     </div>
