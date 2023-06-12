@@ -26,7 +26,8 @@ class Orders(models.Model):
         ("order placed","order placed"),
         ("shipped","shipped"),
         ("out for delivery","out for delivery"),
-        ("cancel","cancel")
+        ("cancel","cancel"),
+        ("delivered","delivered")
     )
     status=models.CharField(max_length=100,choices=options,default="order placed")
     date=models.DateField(auto_now_add=True,null=True)

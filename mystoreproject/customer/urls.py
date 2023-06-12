@@ -11,5 +11,6 @@ urlpatterns = [
     path('delcart/<int:id>',DeleteList.as_view(),name="delcart"),
     path('check/<int:cid>/<int:pid>',CheckOut.as_view(),name="check"),
     path('buynow/<int:pid>',BuyNow.as_view(),name="buynow"),
-
+    path('myorder',OrderListView.as_view(),name="myorder"),
+    path('myorder/cancel/<int:id>',cancelorder,name="cancel"),
 ]

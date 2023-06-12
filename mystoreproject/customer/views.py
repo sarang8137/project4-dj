@@ -1,4 +1,5 @@
 from typing import Any, Dict
+from django.db.models.query import QuerySet
 from django.shortcuts import render,redirect
 from django.views.generic import TemplateView,ListView,View,DetailView,CreateView
 from owner.models import ProductModel
@@ -87,4 +88,18 @@ class BuyNow(TemplateView):
         Orders.objects.create(product=prod,user=user,address=address,phone=phone)
         messages.success(request,"order placed")
         return redirect("userhome")
+        
+class OrderListView(ListView):
+    template_name="orderslist.html"
+    model=Orders
+    context_object_name="order"
+    def get_queryset(self):
+        return Orders.objects.filter(user=self.request.user)
+    
+def cancelorder(request,id):
+    ord=Orders.objects.get(id=id)
+    ord.status="cancel"
+    ord.save()
+    messages.error(request,"order cancelled")
+    return redirect("myorder")
         
