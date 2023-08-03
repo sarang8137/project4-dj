@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'owner',
     'customer',
     'rest_framework',
-    'rest_framework.authtoken'
+    'rest_framework.authtoken',
+    "corsheaders",
 ]
 
 MIDDLEWARE = [
@@ -52,6 +53,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
+    "django.middleware.common.CommonMiddleware",
 ]
 
 ROOT_URLCONF = 'mystoreproject.urls'
@@ -127,3 +130,20 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+CORS_ALLOW_METHODS = (
+    "DELETE",
+    "GET",
+    "OPTIONS",
+    "PATCH",
+    "POST",
+    "PUT",
+)
+
+CORS_ALLOWED_ORIGINS = [
+    # "https://example.com",
+    # "https://sub.example.com",
+    # "http://localhost:8080",
+    "http://localhost:4200",
+]
