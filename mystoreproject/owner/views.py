@@ -74,6 +74,12 @@ class ProductModelViewset(ModelViewSet):
     authentication_classes=[authentication.TokenAuthentication]
     permission_classes=[permissions.IsAuthenticated]
 
+    def destroy(self,request,*args,**kwargs):
+        id=kwargs.get("pk")
+        ProductModel.objects.filter(id=id).delete()
+        return Response({"msg":"Deleted"})
+    
+
 class SignUpView(ViewSet):
     def create(self,request,*args,**kwargs):
         ser=UserSerializer(data=request.data)
